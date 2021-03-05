@@ -1,27 +1,20 @@
-window.onload = () => {
-    let elem = document.querySelectorAll('.block__content h4');
-    function calculator(number, elem) {
-        let i = 0;
-        let interval;
+let elem;
+function calculator(number, elem) {
+    let i = 0;
+    let interval;
 
-        interval = setInterval(up, 20, number, elem);
-        function up(number, elem) {
-            if (i <= number) {
-                i++;
-                elem.innerHTML = i;
-            }
-            else
-                clearInterval(interval);
+    interval = setInterval(up, 5, number, elem);
+    function up(number, elem) {
+        if (i <= number) {
+            i++;
+            elem.innerHTML = i;
         }
+        else
+            clearInterval(interval);
     }
-
-    setTimeout(()=>{
-        calculator(123, elem[0]);
-        calculator(223, elem[1]);
-        calculator(523, elem[2]);
-        calculator(23, elem[3]);
-    
-    },2000) 
+}
+window.onload = () => {
+    elem = document.querySelectorAll('.block__content h4');
 }
 
 
@@ -43,7 +36,7 @@ function topFunction() {
     document.documentElement.scrollTop = 0;
 }
 
-const items = document.querySelectorAll(".wwd, .banner, .wwa");
+const items = document.querySelectorAll("header,section, footer");
 
 function elementInViewport(el) {
     var top = el.offsetTop;
@@ -70,6 +63,16 @@ function callbackFunc() {
         if (elementInViewport(items[i])) {
             if (!items[i].classList.contains("show")) {
                 items[i].classList.add("show");
+                if(items[i].classList.contains("stats"))
+                {
+                        setTimeout(()=>{
+                        calculator(123, elem[0]);
+                        calculator(223, elem[1]);
+                        calculator(523, elem[2]);
+                        calculator(23, elem[3]);
+                    
+                    },2000);
+                }
             }
         }
     }
